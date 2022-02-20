@@ -13,6 +13,16 @@ provider "azurerm" {
    features {}
 }
 
+
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "azdevops"
+    storage_account_name = "storageazdevopsalilia"
+    container_name       = "blobazdevops"
+    key                  = "terraform.tfstate"
+  }
+}
+
 // create resource group 
 resource "azurerm_resource_group" "azdevops" {
   name     = "azdevops"
