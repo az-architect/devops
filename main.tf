@@ -18,3 +18,17 @@ resource "azurerm_resource_group" "azdevops" {
   name     = "azdevops"
   location = "West Europe"
 }
+
+resource "azurerm_storage_account" "storageazdevopsalilia" {
+  name                     = "storageazdevopsalilia"
+  resource_group_name      = "azdevops"
+  location                 = "West Europe"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
+resource "azurerm_storage_container" "blobazdevops" {
+  name                  = "blobazdevops"
+  storage_account_name  = "storageazdevopsalilia"
+  container_access_type = "private"
+}
